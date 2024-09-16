@@ -33,9 +33,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textView"
         android:layout_centerHorizontal="true"
-        android:text="Registrate para poder usar nuestros servicios o si ya tienes cuenta "
+        android:text="Registrate para poder usar nuestros servicios"
         android:textStyle="italic"
         android:textSize="14sp"/>
+
 
     <EditText
         android:id="@+id/Nombre"
@@ -129,6 +130,29 @@
         android:layout_alignParentStart="true"
         android:text="Ingresar"
         android:backgroundTint="@color/Normal"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Ya tienes cuenta?"
+        android:layout_marginStart="90dp"
+        android:textStyle="italic"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/InicioSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@id/textView3"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="100dp"
+        android:text="Inicia sesion"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        android:textColor="@color/Normal"/>
 
 
 

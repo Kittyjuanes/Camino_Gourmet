@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -33,9 +36,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".logic.CreacionCuenta"
-            android:exported="true" />
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".logic.Opciones"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".logic.Mapa"
+            android:exported="true">
+        </activity>
+
     </application>
 
 </manifest>

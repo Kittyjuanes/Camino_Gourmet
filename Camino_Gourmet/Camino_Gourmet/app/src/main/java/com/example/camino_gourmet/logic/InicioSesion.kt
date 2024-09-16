@@ -2,7 +2,10 @@ package com.example.camino_gourmet.logic
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.camino_gourmet.R
 
@@ -12,11 +15,30 @@ class InicioSesion : AppCompatActivity() {
         /*enableEdgeToEdge()*/
         setContentView(R.layout.inicio_sesion)
 
+        val nombre = findViewById<EditText>(R.id.Usuario)
         val TextView = findViewById<TextView>(R.id.CrearCuenta)
+        val Button = findViewById<Button>(R.id.BotonIngreso)
 
         TextView.setOnClickListener {
             val intent = Intent(this, CreacionCuenta::class.java)
             startActivity(intent)
+        }
+
+        Button.setOnClickListener {
+            Button.setOnClickListener {
+                val nombre = nombre.text.toString()
+
+                if(nombre.isNotEmpty()){
+                    val intent = Intent(this, Opciones::class.java)
+                    startActivity(intent)
+                }
+
+                else
+                    Toast.makeText(this,"Ingrese el nombre de usuario", Toast.LENGTH_SHORT).show()
+
+
+            }
+
         }
 
         /*
