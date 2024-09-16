@@ -3,6 +3,7 @@ package com.example.camino_gourmet.logic
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.Switch
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -17,14 +18,20 @@ class Opciones: AppCompatActivity() {
         setContentView(R.layout.opciones)
 
         //Inicializacion de vistas
-        val TextView = findViewById<TextView>(R.id.InicioSesion)
+        val Hamburger = findViewById<ImageView>(R.id.Hamburger)
+        val Sushi = findViewById<ImageView>(R.id.Sushi)
+        val Pizza = findViewById<ImageView>(R.id.Pizza)
 
-
-        //Crear listener para cuando se haga click en el TextView
-        TextView.setOnClickListener {
-            val intent = Intent(this, InicioSesion::class.java)
-            startActivity(intent)
+        Hamburger.setOnClickListener {
+            TipoRestaurante("Hamburgesa")
         }
+        Sushi.setOnClickListener {
+            TipoRestaurante("Sushi")
+        }
+        Pizza.setOnClickListener {
+            TipoRestaurante("Pizza")
+        }
+
 
         /*
           ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -35,6 +42,15 @@ class Opciones: AppCompatActivity() {
          */
 
     }
+
+    private fun  TipoRestaurante(tipo: String) {
+        val intent = Intent(this, Mapa::class.java).apply {
+            putExtra("TipoRestaurante", tipo)
+        }
+        startActivity(intent)
+    }
+
+
 
 
 
