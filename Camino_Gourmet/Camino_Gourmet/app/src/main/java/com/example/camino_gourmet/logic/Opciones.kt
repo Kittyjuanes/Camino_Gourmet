@@ -23,7 +23,7 @@ class Opciones: AppCompatActivity() {
         val Pizza = findViewById<ImageView>(R.id.Pizza)
 
         Hamburger.setOnClickListener {
-            TipoRestaurante("Hamburgesa")
+            TipoRestaurante("Hamburguesa")
         }
         Sushi.setOnClickListener {
             TipoRestaurante("Sushi")

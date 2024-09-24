@@ -28,6 +28,21 @@
             android:name=".logic.CambiarContrasena"
             android:exported="false" />
         <activity
+            android:name=".logic.CreacionCuenta"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".logic.Opciones"
+            android:exported="true"/>
+        <activity
+            android:name=".logic.Mapa"
+            android:exported="true"/>
+        <activity
+            android:name=".logic.Paradas"
+            android:exported="true"/>
+
+        <activity
             android:name=".logic.InicioSesion"
             android:exported="true">
             <intent-filter>
@@ -37,20 +52,7 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".logic.CreacionCuenta"
-            android:exported="true">
-        </activity>
 
-        <activity
-            android:name=".logic.Opciones"
-            android:exported="true">
-        </activity>
-
-        <activity
-            android:name=".logic.Mapa"
-            android:exported="true">
-        </activity>
 
     </application>
 

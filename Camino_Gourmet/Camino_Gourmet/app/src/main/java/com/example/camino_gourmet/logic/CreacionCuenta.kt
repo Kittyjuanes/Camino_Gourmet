@@ -12,7 +12,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.camino_gourmet.R
 
-class CreacionCuenta: AppCompatActivity() {
+class
+CreacionCuenta: AppCompatActivity() {
 
     private lateinit var switch: Switch
     private lateinit var restaurante: EditText

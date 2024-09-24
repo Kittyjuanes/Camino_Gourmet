@@ -1,7 +1,6 @@
 package com.example.camino_gourmet.logic
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -10,11 +9,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.view.View
-import android.widget.Switch
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -43,6 +40,8 @@ class Mapa: AppCompatActivity() {
 
         // Recibir el tipo de restaurante seleccionado
         Restaurante = intent.getStringExtra("TipoRestaurante") ?: ""
+        val Button = findViewById<Button>(R.id.button)
+
 
         pedirPermiso(this, Manifest.permission.ACCESS_FINE_LOCATION, "Acceder Ubicacion", algo)
         pedirPermiso(this, Manifest.permission.ACCESS_COARSE_LOCATION, "Acceder Ubicacion", algo)
@@ -56,7 +55,15 @@ class Mapa: AppCompatActivity() {
             }
             */
 
+        Button.setOnClickListener {
+            val intent = Intent(this, Paradas::class.java).apply {
+                putExtra("TipoRestaurante", Restaurante)
+            }
+            startActivity(intent)
+        }
+
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
         menuInflater.inflate(R.menu.drawer_menu, menu)
@@ -117,6 +124,9 @@ class Mapa: AppCompatActivity() {
     private fun BuscarRestaurante(location: Location) {
         val latitude = location.latitude
         val longitude = location.longitude
+
+        Data.latitude = latitude
+        Data.longitude = longitude
 
         // Mostrar la longitud y latitud en el TextView
         statusTextView.text = "Buscando restaurantes de $Restaurante en \n Longitud: $longitude \n Latitud: $latitude "

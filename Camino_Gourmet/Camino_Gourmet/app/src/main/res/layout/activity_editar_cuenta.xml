@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="Nombre"
-            android:textColor="#C1C7D0"
+            android:textColor="#000000"
             android:textSize="17sp"
             android:textStyle="bold" />
 
@@ -53,7 +53,7 @@
             android:ems="10"
             android:inputType="text"
             android:textSize="20sp"
-            android:text="Carlos"
+            android:hint="Carlos"
             />
 
         <TextView
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="Apellido"
-            android:textColor="#C1C7D0"
+            android:textColor="#000000"
             android:textSize="17sp"
             android:textStyle="bold" />
 
@@ -74,7 +74,7 @@
             android:ems="10"
             android:inputType="text"
             android:textSize="20sp"
-            android:text="Cuesta"
+            android:hint="Cuesta"
             />
 
         <TextView
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="Correo electrónico"
-            android:textColor="#C1C7D0"
+            android:textColor="#060707"
             android:textSize="17sp"
             android:textStyle="bold" />
 
@@ -95,7 +95,7 @@
             android:ems="10"
             android:inputType="text"
             android:textSize="20sp"
-            android:text="carloscuesta@gmail.com"
+            android:hint="carloscuesta@gmail.com"
             />
         <TextView
             android:id="@+id/textUsername"
@@ -103,7 +103,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="Nombre de usuario"
-            android:textColor="#C1C7D0"
+            android:textColor="#000000"
             android:textSize="17sp"
             android:textStyle="bold" />
 
@@ -115,7 +115,7 @@
             android:ems="10"
             android:inputType="text"
             android:textSize="20sp"
-            android:text="cacuesta57"
+            android:hint="cacuesta57"
             />
     </LinearLayout>
 
