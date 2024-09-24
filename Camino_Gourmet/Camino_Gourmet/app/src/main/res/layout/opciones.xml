@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="197dp"
         android:layout_alignParentTop="true"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:src="@drawable/opciones"/>
 
     <TextView
         android:id="@+id/textView4"
@@ -43,7 +43,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="35dp"
         android:padding="10dp"
-        app:srcCompat="@drawable/hamburegesa" />
+        android:src="@drawable/hamburguesa_icon" />
 
     <ImageView
         android:id="@+id/Sushi"
@@ -53,7 +53,7 @@
         android:layout_marginTop="35dp"
         android:layout_toEndOf="@+id/Hamburger"
         android:padding="10dp"
-        app:srcCompat="@drawable/sushi" />
+        android:src="@drawable/sushi_icon" />
 
     <ImageView
         android:id="@+id/Pizza"
@@ -64,6 +64,6 @@
         android:layout_toEndOf="@id/Sushi"
         android:layout_alignParentEnd="true"
         android:padding="10dp"
-        app:srcCompat="@drawable/pizza" />
+        android:src="@drawable/pizza_icon" />
 
 </RelativeLayout>
