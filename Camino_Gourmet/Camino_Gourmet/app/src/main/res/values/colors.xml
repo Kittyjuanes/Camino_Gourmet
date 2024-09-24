@@ -10,5 +10,6 @@
     <color name="textoSecundario">#7A869A</color>
     <color name="textoGris">#505050</color>
     <color name="verde">#40B306</color>
+    <color name="transparent">#00000000</color>
 
 </resources>
