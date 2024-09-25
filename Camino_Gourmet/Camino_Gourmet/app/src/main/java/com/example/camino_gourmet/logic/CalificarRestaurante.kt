@@ -9,11 +9,16 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.camino_gourmet.R
@@ -32,6 +37,10 @@ class CalificarRestaurante : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calificar_restaurante)
+
+
+        val toolbar: Toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+        setSupportActionBar(toolbar)
 
         imageView = findViewById(R.id.imageView) // Cambié de TextView a ImageView
         btnCamara = findViewById(R.id.botonCamara)
@@ -104,5 +113,23 @@ class CalificarRestaurante : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Permiso de cámara denegado", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        menuInflater.inflate(R.menu.drawer_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var intentCuenta = Intent(this, Perfil::class.java)
+        var intentMiRestaurante = Intent(this, MiRestaurante::class.java)
+        var intentInicio = Intent(this, Mapa::class.java)
+        when(item.itemId){
+            R.id.Cuenta -> startActivity(intentCuenta)
+            R.id.miRestaurante -> startActivity(intentMiRestaurante)
+            R.id.Inicio -> startActivity(intentInicio)
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

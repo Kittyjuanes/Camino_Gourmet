@@ -48,4 +48,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("androidx.biometric:biometric:1.2.0-alpha04")
     implementation(libs.gson)
+    /*implementation(libs.androidx.appcompat.v131)*/
 }

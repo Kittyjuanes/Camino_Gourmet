@@ -3,9 +3,14 @@ package com.example.camino_gourmet.logic
 import ComentariosAdapter
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,6 +28,10 @@ class PerfilRestaurante : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil_restaurante)
+
+        val toolbar: Toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+        setSupportActionBar(toolbar)
+
         comentariosView = findViewById(R.id.comentariosView)
         comentariosView.layoutManager = LinearLayoutManager(this)
         loadComentarios()
@@ -52,4 +61,22 @@ class PerfilRestaurante : AppCompatActivity() {
     private data class ComentarioResponse(
         val comentarios: List<Comentario>
     )
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        menuInflater.inflate(R.menu.drawer_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var intentCuenta = Intent(this, Perfil::class.java)
+        var intentMiRestaurante = Intent(this, MiRestaurante::class.java)
+        var intentInicio = Intent(this, Mapa::class.java)
+        when(item.itemId){
+            R.id.Cuenta -> startActivity(intentCuenta)
+            R.id.miRestaurante -> startActivity(intentMiRestaurante)
+            R.id.Inicio -> startActivity(intentInicio)
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }

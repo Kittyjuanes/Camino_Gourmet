@@ -1,11 +1,17 @@
 package com.example.camino_gourmet.logic
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import android.widget.ListView
 import android.widget.SearchView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.example.camino_gourmet.R
 import com.example.camino_gourmet.data.Data
 import com.example.camino_gourmet.data.Funciones
@@ -27,6 +33,8 @@ class Paradas: AppCompatActivity() {
         /*enableEdgeToEdge()*/
         setContentView(R.layout.paradas)
 
+        val toolbar: Toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+        setSupportActionBar(toolbar)
 
         val latitude = Data.latitude
         val longitude = Data.longitude
@@ -68,6 +76,23 @@ class Paradas: AppCompatActivity() {
 
 
 
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        menuInflater.inflate(R.menu.drawer_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var intentCuenta = Intent(this, Perfil::class.java)
+        var intentMiRestaurante = Intent(this, MiRestaurante::class.java)
+        var intentInicio = Intent(this, Mapa::class.java)
+        when(item.itemId){
+            R.id.Cuenta -> startActivity(intentCuenta)
+            R.id.miRestaurante -> startActivity(intentMiRestaurante)
+            R.id.Inicio -> startActivity(intentInicio)
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 

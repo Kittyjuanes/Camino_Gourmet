@@ -9,10 +9,12 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.camino_gourmet.R
@@ -31,6 +33,8 @@ class Mapa: AppCompatActivity() {
         /*enableEdgeToEdge()*/
         setContentView(R.layout.mapa)
 
+        val toolbar: Toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+        setSupportActionBar(toolbar)
 
         val algo = Data.MY_PERMISSION_LOCATION_CODE
 
@@ -71,14 +75,12 @@ class Mapa: AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var intentCuenta = Intent(this, Perfil::class.java)
+        var intentMiRestaurante = Intent(this, MiRestaurante::class.java)
         when(item.itemId){
-            R.id.Cuenta -> Toast.makeText(this,"cuenta", Toast.LENGTH_SHORT).show()
-            R.id.Configuracion -> Toast.makeText(this,"configuracion", Toast.LENGTH_SHORT).show()
-            R.id.LogOut ->{
-                val intent = Intent(this, InicioSesion::class.java)
-                startActivity(intent)
-                true
-            }
+            R.id.Cuenta -> startActivity(intentCuenta)
+            R.id.miRestaurante -> startActivity(intentMiRestaurante)
+            R.id.Inicio -> {}
         }
         return super.onOptionsItemSelected(item)
     }
