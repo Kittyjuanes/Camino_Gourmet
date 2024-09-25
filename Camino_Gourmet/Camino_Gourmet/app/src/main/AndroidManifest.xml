@@ -23,32 +23,36 @@
         android:theme="@style/Theme.Camino_Gourmet"
         tools:targetApi="31">
         <activity
+            android:name=".logic.PerfilRestaurante"
+            android:exported="false" >
+        </activity>
+        <activity
             android:name=".logic.AutorizarHuella"
             android:exported="false" />
         <activity
             android:name=".logic.CalificarRestaurante"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".logic.MiRestaurante"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".logic.Perfil"
-            android:exported="false" />
+            android:exported="false">
+        </activity>
+
         <activity
             android:name=".logic.EditarCuenta"
-            android:exported="false" />
+            android:exported="false" >
+
+        </activity>
         <activity
             android:name=".logic.CambiarContrasena"
             android:exported="false" />
         <activity
             android:name=".logic.CreacionCuenta"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".logic.Opciones"
             android:exported="true" />
@@ -60,8 +64,12 @@
             android:exported="true" />
         <activity
             android:name=".logic.InicioSesion"
-            android:exported="false">
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

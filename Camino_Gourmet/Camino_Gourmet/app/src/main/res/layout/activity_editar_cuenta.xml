@@ -53,7 +53,7 @@
             android:ems="10"
             android:inputType="text"
             android:textSize="20sp"
-            android:hint="Carlos"
+            android:text="Carlos"
             />
 
         <TextView
@@ -74,7 +74,7 @@
             android:ems="10"
             android:inputType="text"
             android:textSize="20sp"
-            android:hint="Cuesta"
+            android:text="Cuesta"
             />
 
         <TextView
@@ -95,7 +95,7 @@
             android:ems="10"
             android:inputType="text"
             android:textSize="20sp"
-            android:hint="carloscuesta@gmail.com"
+            android:text="carloscuesta@gmail.com"
             />
         <TextView
             android:id="@+id/textUsername"
@@ -115,7 +115,7 @@
             android:ems="10"
             android:inputType="text"
             android:textSize="20sp"
-            android:hint="cacuesta57"
+            android:text="cacuesta57"
             />
     </LinearLayout>
 

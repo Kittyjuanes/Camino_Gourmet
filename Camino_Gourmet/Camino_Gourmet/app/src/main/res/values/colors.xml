@@ -12,5 +12,6 @@
     <color name="verde">#40B306</color>
     <color name="transparent">#00000000</color>
     <color name="rojo">#eb0000</color>
+    <color name="naranjaFocus">#FF723F</color>
 
 </resources>
