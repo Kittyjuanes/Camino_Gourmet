@@ -1,6 +1,7 @@
 package com.example.camino_gourmet.logic
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,7 @@ class RestaurantsAdapter(context: Context?, private val restaurantes: List<Resta
         val nombreRestaurante = view.findViewById<TextView>(R.id.Restaurante)
         val categoriaRestaurante = view.findViewById<ImageView>(R.id.logo)
         val calificacionRestaurante = view.findViewById<TextView>(R.id.Calificacion)
+        val perfilButton = view.findViewById<TextView>(R.id.Perfil)
 
         // Poblar los datos del restaurante en las vistas
         nombreRestaurante.text = restaurante?.nombre
@@ -30,6 +32,12 @@ class RestaurantsAdapter(context: Context?, private val restaurantes: List<Resta
             "Pizza" -> categoriaRestaurante.setImageResource(R.drawable.pizza)
             "Hamburguesa"-> categoriaRestaurante.setImageResource(R.drawable.hamburegesa)
             "Sushi" -> categoriaRestaurante.setImageResource(R.drawable.sushi)
+        }
+
+        perfilButton.setOnClickListener {
+            val intent = Intent(context, PerfilRestaurante::class.java)
+            intent.putExtra("restaurantName", restaurante?.nombre)
+            context.startActivity(intent)
         }
 
         return view

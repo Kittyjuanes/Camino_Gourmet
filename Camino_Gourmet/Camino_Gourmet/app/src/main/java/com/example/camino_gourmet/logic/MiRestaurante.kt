@@ -27,6 +27,8 @@ class MiRestaurante : AppCompatActivity() {
         switchRestaurante = findViewById<Switch>(R.id.switchRestaurante)
         checkSwitch()
         switchRestaurante.setOnClickListener{clickSwitch();checkSwitch()}
+
+
     }
 
     fun clickSwitch(){

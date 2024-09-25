@@ -8,6 +8,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -32,6 +33,10 @@ class PerfilRestaurante : AppCompatActivity() {
         val toolbar: Toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
 
+        val restaurantName = intent.getStringExtra("restaurantName")
+
+        val textoNombreRestaurante = findViewById<TextView>(R.id.textoNombreRestaurante)
+        textoNombreRestaurante.text = restaurantName
         comentariosView = findViewById(R.id.comentariosView)
         comentariosView.layoutManager = LinearLayoutManager(this)
         loadComentarios()
