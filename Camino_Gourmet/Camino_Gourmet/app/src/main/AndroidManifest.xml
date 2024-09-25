@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
     <application
         android:allowBackup="true"
@@ -22,12 +23,20 @@
         android:theme="@style/Theme.Camino_Gourmet"
         tools:targetApi="31">
         <activity
+            android:name=".logic.AutorizarHuella"
+            android:exported="false" />
+        <activity
             android:name=".logic.CalificarRestaurante"
-            android:exported="false" >
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".logic.MiRestaurante"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".logic.Perfil"
             android:exported="false" />
@@ -39,30 +48,21 @@
             android:exported="false" />
         <activity
             android:name=".logic.CreacionCuenta"
-            android:exported="true">
-        </activity>
-
+            android:exported="true"></activity>
         <activity
             android:name=".logic.Opciones"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".logic.Mapa"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".logic.Paradas"
-            android:exported="true"/>
-
+            android:exported="true" />
         <activity
             android:name=".logic.InicioSesion"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
 
         </activity>
-
     </application>
 
 </manifest>

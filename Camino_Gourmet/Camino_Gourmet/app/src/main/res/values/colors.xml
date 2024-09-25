@@ -11,5 +11,6 @@
     <color name="textoGris">#505050</color>
     <color name="verde">#40B306</color>
     <color name="transparent">#00000000</color>
+    <color name="rojo">#eb0000</color>
 
 </resources>
