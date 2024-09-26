@@ -24,22 +24,22 @@ class InicioSesion : AppCompatActivity() {
             startActivity(intent)
         }
 
+
         Button.setOnClickListener {
-            Button.setOnClickListener {
-                val nombre = nombre.text.toString()
+            val nombre = nombre.text.toString()
 
-                if(nombre.isNotEmpty()){
-                    val intent = Intent(this, Opciones::class.java)
-                    startActivity(intent)
-                }
-
-                else
-                    Toast.makeText(this,"Ingrese el nombre de usuario", Toast.LENGTH_SHORT).show()
-
-
+            if(nombre.isNotEmpty()){
+                val intent = Intent(this, Opciones::class.java)
+                startActivity(intent)
             }
 
+            else
+                Toast.makeText(this,"Ingrese el nombre de usuario", Toast.LENGTH_SHORT).show()
+
+
         }
+
+
 
         /*
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
