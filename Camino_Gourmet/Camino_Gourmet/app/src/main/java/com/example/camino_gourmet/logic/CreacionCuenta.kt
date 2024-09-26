@@ -29,7 +29,12 @@ CreacionCuenta: AppCompatActivity() {
         switch = findViewById<Switch>(R.id.Switch)
         val TextView = findViewById<TextView>(R.id.InicioSesion)
         val Button = findViewById<Button>(R.id.BotonIngreso)
-        val nombre = findViewById<EditText>(R.id.NomUsuario)
+        val nombre = findViewById<EditText>(R.id.Nombre)
+        val apellido = findViewById<EditText>(R.id.Apellido)
+        val correo = findViewById<EditText>(R.id.Correo)
+        val usuario = findViewById<EditText>(R.id.NomUsuario)
+        val contrasena = findViewById<EditText>(R.id.Contraseña)
+        val restaurante = findViewById<EditText>(R.id.Restaurante)
 
         //Estado inicial del TextView Restaurante
         restaurante.visibility = View.GONE
@@ -47,19 +52,33 @@ CreacionCuenta: AppCompatActivity() {
 
         Button.setOnClickListener {
             val nombre = nombre.text.toString()
+            val apellido = apellido.text.toString()
+            val correo = correo.text.toString()
+            val usuario = usuario.text.toString()
+            val contrasena = contrasena.text.toString()
+            val restaurante = restaurante.text.toString()
 
-            if(nombre.isNotEmpty()){
-                val intent = Intent(this, Opciones::class.java)
-                startActivity(intent)
+            if (switch.isChecked){
+                if(nombre.isNotEmpty() && apellido.isNotEmpty() && correo.isNotEmpty() && usuario.isNotEmpty() && contrasena.isNotEmpty() && restaurante.isNotEmpty()){
+                    val intent = Intent(this, Opciones::class.java)
+                    startActivity(intent)
+                }
+
+                else
+                    Toast.makeText(this,"Ingrese los campos para continuar", Toast.LENGTH_SHORT).show()
             }
+            else{
+                if(nombre.isNotEmpty() && apellido.isNotEmpty() && correo.isNotEmpty() && usuario.isNotEmpty() && contrasena.isNotEmpty()){
+                    val intent = Intent(this, Opciones::class.java)
+                    startActivity(intent)
+                }
 
-            else
-                Toast.makeText(this,"Ingrese el nombre de usuario", Toast.LENGTH_SHORT).show()
+                else
+                    Toast.makeText(this,"Ingrese los campos para continuar", Toast.LENGTH_SHORT).show()
+            }
 
 
         }
-
-
 
             /*
             ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -82,6 +101,8 @@ CreacionCuenta: AppCompatActivity() {
                 restaurante.visibility = View.GONE
         }
     }
+
+
 
 }
 

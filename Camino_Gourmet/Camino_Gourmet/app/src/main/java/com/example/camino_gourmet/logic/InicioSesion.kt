@@ -15,26 +15,27 @@ class InicioSesion : AppCompatActivity() {
         /*enableEdgeToEdge()*/
         setContentView(R.layout.inicio_sesion)
 
+        val contrasena = findViewById<EditText>(R.id.Contraseña)
         val nombre = findViewById<EditText>(R.id.Usuario)
         val TextView = findViewById<TextView>(R.id.CrearCuenta)
         val Button = findViewById<Button>(R.id.BotonIngreso)
+
 
         TextView.setOnClickListener {
             val intent = Intent(this, CreacionCuenta::class.java)
             startActivity(intent)
         }
 
-
         Button.setOnClickListener {
             val nombre = nombre.text.toString()
+            val contrasena = contrasena.text.toString()
 
-            if(nombre.isNotEmpty()){
+            if(nombre.isNotEmpty() && contrasena.isNotEmpty()){
                 val intent = Intent(this, Opciones::class.java)
                 startActivity(intent)
             }
-
             else
-                Toast.makeText(this,"Ingrese el nombre de usuario", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Ingrese los campos para continuar", Toast.LENGTH_SHORT).show()
 
 
         }

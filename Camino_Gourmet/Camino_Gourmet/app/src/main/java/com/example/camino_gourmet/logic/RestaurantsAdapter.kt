@@ -37,6 +37,7 @@ class RestaurantsAdapter(context: Context?, private val restaurantes: List<Resta
         perfilButton.setOnClickListener {
             val intent = Intent(context, PerfilRestaurante::class.java)
             intent.putExtra("restaurantName", restaurante?.nombre)
+            intent.putExtra("puntaje",restaurante?.calificacion)
             context.startActivity(intent)
         }
 
