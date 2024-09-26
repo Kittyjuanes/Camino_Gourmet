@@ -38,8 +38,10 @@ class PerfilRestaurante : AppCompatActivity() {
 
         val textoNombreRestaurante = findViewById<TextView>(R.id.textoNombreRestaurante)
         val calificacionRestaurante = findViewById<TextView>(R.id.Calificacion)
+
         textoNombreRestaurante.text = restaurantName
         calificacionRestaurante.text = calificacion.toString()
+
         comentariosView = findViewById(R.id.comentariosView)
         comentariosView.layoutManager = LinearLayoutManager(this)
         loadComentarios()
