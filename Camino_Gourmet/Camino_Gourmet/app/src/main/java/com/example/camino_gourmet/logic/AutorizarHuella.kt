@@ -25,6 +25,7 @@ class AutorizarHuella : AppCompatActivity() {
         setContentView(R.layout.activity_autorizar_huella)
         resultadoPermiso = findViewById(R.id.resultadoPermiso)
         checkAndRequestBiometricsPermission()
+
     }
 
     private fun checkAndRequestBiometricsPermission() {
