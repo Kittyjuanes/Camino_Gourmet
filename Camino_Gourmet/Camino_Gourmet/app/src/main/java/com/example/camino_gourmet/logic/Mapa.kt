@@ -4,6 +4,11 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import org.osmdroid.config.Configuration
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory
+import org.osmdroid.util.GeoPoint
+import org.osmdroid.views.MapView
+import org.osmdroid.views.overlay.Marker
 import android.location.Location
 import android.os.Bundle
 import android.view.Menu
@@ -19,22 +24,36 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.camino_gourmet.R
 import com.example.camino_gourmet.data.Data
+import com.example.camino_gourmet.data.Funciones
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import org.osmdroid.api.IMapController
 
 class Mapa: AppCompatActivity() {
 
     private lateinit var statusTextView: TextView
     private  lateinit var mFusedLocationClient: FusedLocationProviderClient
     private lateinit var Restaurante: String
+    private lateinit var mapView: MapView
+    private lateinit var startPoint:GeoPoint
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         /*enableEdgeToEdge()*/
+
+        //Inicializar el contexto para osmdroid
+        Configuration.getInstance().load(this, getSharedPreferences("osmdroid", MODE_PRIVATE))
+
         setContentView(R.layout.mapa)
 
         val toolbar: Toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
+
+        mapView = findViewById(R.id.osmMap)
+        mapView.setTileSource(TileSourceFactory.MAPNIK)
+        mapView.setBuiltInZoomControls(true)
+        mapView.setMultiTouchControls(true)
 
         val algo = Data.MY_PERMISSION_LOCATION_CODE
 
@@ -44,6 +63,7 @@ class Mapa: AppCompatActivity() {
 
         // Recibir el tipo de restaurante seleccionado
         Restaurante = intent.getStringExtra("TipoRestaurante") ?: ""
+        Funciones.guardarRestaurantesjson(this, Restaurante)
         val Button = findViewById<Button>(R.id.button)
 
 
@@ -124,19 +144,41 @@ class Mapa: AppCompatActivity() {
     }
 
     private fun BuscarRestaurante(location: Location) {
-        val latitude = location.latitude
-        val longitude = location.longitude
 
-        Data.latitude = latitude
-        Data.longitude = longitude
+        val userLocation = GeoPoint(location.latitude, location.longitude)
+        val restaurantes = Data.RESTAURANT_LIST
+
+        //Ubicar el mapa en la ubicación del usuario
+        mapView.controller.setZoom(15.0)
+        mapView.controller.setCenter(userLocation)
+
+        // Añadir un marcador en la ubicación del usuario
+        val marker = Marker(mapView)
+        marker.position = userLocation
+        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+        marker.title = "Tu ubicación"
+        mapView.overlays.add(marker)
+
+        for (restaurant in restaurantes){
+            val marker = Marker(mapView)
+            val point = GeoPoint(restaurant.latitud, restaurant.longitud)
+            marker.position = point
+            marker.title = restaurant.nombre
+            marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+
+            // Añadir el marcador al mapa
+            mapView.overlays.add(marker)
+        }
+
 
         // Mostrar la longitud y latitud en el TextView
-        statusTextView.text = "Buscando restaurantes de $Restaurante en \n Longitud: $longitude \n Latitud: $latitude "
+        statusTextView.text = "Buscando restaurantes de $Restaurante"
         statusTextView.setTextColor(ContextCompat.getColor(this, android.R.color.holo_green_dark))
 
         // Aquí deberías implementar la lógica para buscar restaurantes cercanos de acuerdo al tipo seleccionado
-        // Puedes usar una API de terceros como Google Places o una base de datos local para hacer la búsqueda.
 
+        //Refrescar el mapa
+        mapView.invalidate()
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
@@ -171,6 +213,22 @@ class Mapa: AppCompatActivity() {
             statusTextView.text = ""  // Limpiar el mensaje cuando se cargan los contactos
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
+        val mapController: IMapController = mapView.controller
+        mapController.setZoom(18.0)
+        // Intentar obtener la ubicación y centrar el mapa en la reanudación de la actividad
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            setLocation()
+        }
+    }
+    override fun onPause() {
+        super.onPause()
+        mapView.onPause()
+    }
+
 
 
 }

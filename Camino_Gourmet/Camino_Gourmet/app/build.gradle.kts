@@ -49,4 +49,6 @@ dependencies {
     implementation("androidx.biometric:biometric:1.2.0-alpha04")
     implementation(libs.gson)
     /*implementation(libs.androidx.appcompat.v131)*/
+    implementation("org.osmdroid:osmdroid-android:6.1.14")
+    implementation("com.github.MKergall:osmbonuspack:6.9.0")
 }
